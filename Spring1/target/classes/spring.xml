@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- bean definitions here -->
+    <!--NUMBER OF OBJECT CREATION WILL BE DEPENDENT ON THE NUMBER OF BEAN TAGS PRESENT-->
+    <!--
+    <bean id="alien1" class="com.simsam.Alien"></bean>
+    <bean id="alien2" class="com.simsam.Alien"></bean>
+    -->
+
+    <!-- for getting multiple objects we have to add a attribute
+     namely scope. The scope singleton refers to the same object
+      whereas the scope prototype creates a new object. -->
+
+<!--    <bean id="doodler" class="com.simsam.Doodle" scope="prototype">-->
+<!--        &lt;!&ndash; SETTER INJECTION EXAMPLE-->
+<!--        calls the setter methord and then assigns the respective value-->
+<!--        &ndash;&gt;-->
+<!--        &lt;!&ndash; The value attribute is only used for primitives-->
+<!--        &ndash;&gt;-->
+<!--        <property name="age" value="21"></property>-->
+<!--    </bean>-->
+    <bean id="doodler" class="com.simsam.Doodle" autowire="byName">
+        <property name="age" value="21">
+        </property>
+        <property name="xezo" >
+            <bean id="xezo1" class="com.simsam.Alien" primary="true"></bean>
+        </property>
+        <!--        constructor injection
+         by default will check the sequence
+         beneficial if we have all the arguments with different types
+         the type attribute checks the type of argument not the sequence
+        -->
+<!--        <constructor-arg type="com.simsam.Alien" ref="alien" />-->
+<!--        <constructor-arg type="int" value="21" />-->
+
+        <!-- if we have similar datatypes in the arguments
+         we can use the index attribute specifying the correct index numbers -->
+
+<!--        <constructor-arg index="1" ref="alien" />-->
+<!--        <constructor-arg index="0" value="21" />-->
+<!--        <constructor-arg index="2" value="21000" />-->
+
+
+        <!--        <property name="jadoo" ref="alien"></property>   dealing with objects use ref-->
+    </bean>
+<!--    <bean id="xezo1" class="com.simsam.Alien"> </bean>-->
+<!--    <bean id="xezo" class="com.simsam.Horta"></bean>-->
+<!--    <bean id="alien" class="com.simsam.Alien">-->
+<!--    </bean>-->
+
+</beans>
